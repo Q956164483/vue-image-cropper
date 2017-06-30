@@ -223,14 +223,15 @@ export default {
       EXIF.getData(self.file, function() { 
         self.$store.state.isLoading = false
         let orientation = EXIF.getTag(this, 'Orientation')
-        // alert(orientation)
-        if(!orientation) {
-          if (navigator.userAgent.indexOf('Android') > -1) {
-            orientation = 1
-          } else {
-            orientation = 6
-          }
-        }
+        orientation = orientation?orientation:1
+        // if(!orientation) {
+        //   var ua = navigator.userAgent.toLowerCase();	
+        //   if (/iphone|ipad|ipod/.test(ua)) {
+        //     orientation = 6
+        //   } else {
+        //     orientation = 1
+        //   } 
+        // }
         switch(orientation){ 
           case 1:
             canvas.width = width  

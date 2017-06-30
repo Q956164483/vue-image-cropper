@@ -96,9 +96,9 @@ module.exports = {
     },
     devServer: {
         // host: '192.168.1.102',
-        host: '10.75.64.6',
-        // host: 'localhost',
-        port: 1258,
+        // host: '10.75.64.6',
+        //host: 'localhost',
+        port: 8888,
         inline: true,
         hot: true,
         historyApiFallback: true,
