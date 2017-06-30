@@ -1,0 +1,89 @@
+@import "./color.scss";
+@import "./mixins.scss";
+html, body, div, span, object, iframe,h1, h2, h3, h4, h5, h6, p, pre,a,acronym,address, big,cite, code, em, img, small, strike, strong, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label,legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details,figure, figcaption, footer, header, hgroup, menu, nav, output, section, audio, video,input {margin: 0;padding: 0;box-sizing:border-box;}
+html,body{
+  font-family: Helvetica Neue,Tahoma,Arial,PingFangSC-Regular,Hiragino Sans GB,Microsoft Yahei,sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  overflow: auto;
+   -webkit-overflow-scrolling : touch;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+//   color: #333;
+  background: #fff;
+  height:100%;
+  .root {
+    position: relative;
+    height: 100%;
+  }
+}
+body {
+  // @include font-dpr(30px);
+  width: 100%;
+  // overflow-x: hidden;
+  font-size:.3rem;
+}
+textarea,input,select{
+  border:none;
+  outline:none;
+  resize:none;
+}
+select {
+  /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+  border: none;
+  /*很关键：将默认的select选择框样式清除*/
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  /*将背景改为红色*/
+  background:transparent;
+  /*加padding防止文字覆盖*/
+  padding-right: .14rem;
+  font-size: .28rem;
+}
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand { display: none; }
+li{list-style: none;}
+#app {-webkit-font-smoothing: antialiased;}
+
+/*弹性盒子*/
+.box{display: -webkit-box !important;display: box !important;position:relative;}
+.box-f1{position:relative;-webkit-box-flex: 1;box-flex: 1;}
+.box-ac{-webkit-box-align:center;box-align:center;}
+.box-pc{-webkit-box-pack:center;box-pack:center;}
+.box-pe{webkit-box-pack:end;box-pack:end;}
+.box-pj{-webkit-box-pack:justify;box-pack:justify;}
+.box-ver{-webkit-box-orient:vertical;box-orient:vertical;}
+.box-rev {-webkit-box-direction:reverse;box-direction:reverse;}
+.box-fh{width:100%;}
+.h-p100{height:100%}
+.hide{display: none !important;}
+/*浮动+清除浮动*/
+.fr{float: right} .fl{float: left}
+.clear:after{content:'';display:block;clear: both}
+/*文字超出显示省略号*/
+.ellipsis{overflow: hidden;white-space: nowrap; text-overflow: ellipsis}
+
+.tx-c{text-align: center;}
+.of-hide{overflow: hidden;}
+
+/*动画*/
+.slide-left-enter, .slide-right-leave-active {
+  opacity: 0;
+  transform: translate(.5rem, 0);
+}
+.slide-left-leave-active, .slide-right-enter {
+  opacity: 0;
+  transform: translate(-.5rem, 0);
+}
+.child-router {
+  transition: all .333s cubic-bezier(.55,0,.1,1);
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
