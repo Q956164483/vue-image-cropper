@@ -3,13 +3,20 @@
       <img class="box" v-for="(item,index) in images" :src="item" />
       <div class="setting">
         <div class="box box-ver">
-          裁剪宽度：
-          <input placeholder="宽" v-model="cropperSize.width" />
-          裁剪高度：
-          <input placeholder="高" v-model="cropperSize.height" />
+          <div class="box box-fh">
+            裁剪宽度：
+            <input class="box box-f1" placeholder="宽" v-model="cropperSize.width" />
+          </div>
+          <div class="box  box-fh">
+            裁剪高度：
+            <input class="box box-f1" placeholder="高" v-model="cropperSize.height" />
+          </div>
         </div>
-        <div @click="checkPhoto()" class="uploadImg"></div>
-        <div @click="uploadImg()" class="btn">上传</div>
+        <div class="box box-ac box-pc">
+          <div @click="checkPhoto()" class="uploadImg"></div>
+          <div @click="uploadImg()" class="btn">上传</div>
+        </div>
+        
       </div>
       <image-cropper :cropperSize="cropperSize" :checkPhotoFlag="checkPhotoFlag" :callback="loadImage"></image-cropper>
   </div>
@@ -74,6 +81,7 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+    @import '../css/common.scss';
     @import '../css/mixins.scss';
     .container{
       height:100%;
@@ -101,7 +109,7 @@ export default {
         height:.5rem;
         line-height:.5rem;
         text-align: center;
-        background-color:#AAA;
+        background-color:$theme-color;
         border-radius:.1rem;
       }
     }
@@ -109,6 +117,7 @@ export default {
     .uploadImg{
       width:1rem;
       height:1rem;
+      margin-right:1rem;
       @include bg-size(cover);
       @include bg-image('../img/upload')
     }
