@@ -18,7 +18,7 @@
         </div>
         
       </div>
-      <image-cropper :cropperSize="cropperSize" :checkPhotoFlag="checkPhotoFlag" :callback="loadImage"></image-cropper>
+      <image-cropper ref="imageCropper" :cropperSize="cropperSize" :callback="loadImage"></image-cropper>
   </div>
 </template>
 <script>
@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     checkPhoto () {
-      this.checkPhotoFlag++
+      this.$refs.imageCropper.checkPhoto()
     },
     // image-cropper组件的回调
     loadImage (data) {

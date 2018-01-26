@@ -136,10 +136,6 @@ export default {
         this.imageStyle.transform = 'translate3d(-' + val.left + 'px, -' + val.top + 'px, 0px) scale(' + val.scale + ')'
       },
       deep: true
-    },
-    checkPhotoFlag () {
-      // console.log('触发选择图片')
-      this.checkPhoto()
     }
   },
   methods: {
