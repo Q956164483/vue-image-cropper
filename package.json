@@ -6,11 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
-    "build": "node build/build.js",
-    "deploy": "gulp deploy",
-    "build-cdn-deploy": "node build/build.js && node scripts/cdn.js && gulp deploy",
-    "tree": "tree -l 3 -o tree.txt --ignore 'node_modules, .git, .gitignore package-lock.json, tree.txt'"
+    "build": "node build/build.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
