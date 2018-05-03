@@ -1,20 +1,29 @@
----
-title: vue-image-cropper vue图片裁剪插件
-tags: [前端,VUE,图片裁剪]
----
-# vue-image-cropper
-## 基于vue的图片裁剪插件 vue-image-cropper
+## vue-image-cropper 基于vue的图片压缩裁剪插件
 
-前段时间的一个vue项目，要做图片的裁剪，后来在网上找了找实在找到，于是自己写了一个vue的图片裁剪组件，实现了缩放裁剪，自定义裁剪尺寸，以及iphone和部分安卓机型的照片角度纠正，[关于照片角度](http://www.bcty365.com/content-142-3055-1.html)，网上有详细的说明
-
-## [项目地址](https://github.com/Q956164483/vue-image-cropper.git) 欢迎大家star和提问题
-
-## [演示地址](https://q956164483.github.io/vue-image-cropper/build/#/) chorm下F12 或者手机打开：https://q956164483.github.io/vue-image-cropper/build/#/
-
-## 项目运行
-
-``` bash
-$ npm install
-$ npm run dev
+### 1.功能说明
+图片压缩，图片裁剪，vue图片压缩，vue图片裁剪，vue-image-cropper，解决了部分机型方向不对的问题，同时可以对图片进行尺寸和质量的压缩
+### 2.[效果演示](https://q956164483.github.io/vue-image-cropper/dist/#/)(chrome调试模式下或者手机打开)
+### 3.使用
+1. copy本项目的 ./src/components/imageCropper.vue文件 (imageCropper.vue需要引入exif-small.js)
+2. 在需要使用的页面直接引入imageCropper组件并绑定cropperConfig配置参数和裁剪之后的回调函数callback
+```HTML
+<image-cropper ref="imageCropper" :cropperConfig="cropperConfig" :callback="loadImage"></image-cropper>
 ```
+```javascript
+loadImage (data) {
+  console.log(data)
+  // data为base64字符串
+}
+```
+### 4.参数说明
+```javascript
+cropperConfig: {
+  width: 1, // 裁剪宽度（比例）
+  height: 1, // 裁剪高度（比例）
+  quality: 0.7, // 图片质量（0~1之间）
+  maxWidth: 750 // 导出的图片的最大宽度
+}
+```
+
+
 
