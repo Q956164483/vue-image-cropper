@@ -202,10 +202,10 @@ export default {
 
       // 导出图片的最大宽度
       let maxWidth = this.cropperConfig.maxWidth
-      let scale2 = maxWidth / cropBoxRect.height
+      let scale2 = maxWidth / cropBoxRect.width
 
       let scale = imageState.scale * scale2
-      let width = maxWidth
+      let width = cropBoxRect.width * scale2
       let height = cropBoxRect.height * scale2
       let left = imageState.left * scale2
       let top = imageState.top * scale2
