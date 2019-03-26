@@ -1,33 +1,13 @@
 <template>
   <div id="app">
-    <loading v-if="isLoading"></loading>
-    <transition :name="routerAni">
-      <router-view class="router-view"></router-view>
-    </transition>
+    <router-view class="router-view"></router-view>
   </div>
 </template>
 
 <script>
-// import { popup, openToast, openLoading, closeLoading } from './js/tools'
-import loading from '@/components/loading'
-import { mapState } from 'vuex'
 export default {
   name: 'app',
-  components: {
-    loading
-  },
-  computed: mapState(['isLoading', 'routerAni']),
   mounted () {
-  },
-  methods: {
-  },
-  watch: {
-    '$route' (to, from) {
-      const toPathLen = to.path.length
-      const fromPathLen = from.path.length
-      let routerAni = toPathLen < fromPathLen ? 'slide-right' : 'slide-left'
-      this.$store.commit('routerAni', routerAni)
-    }
   }
 }
 </script>

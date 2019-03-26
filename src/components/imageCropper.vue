@@ -1,5 +1,5 @@
 <style lang="scss" scoped>
-   $themeColor:#45b795;
+  $themeColor:#45b795;
   .box{display: flex;position:relative;}
   .box-f1{flex: 1;}
   .box-ac{align-items: center}
@@ -53,7 +53,7 @@
     <div class="cover box box-ac box-jc" :style="{height: coverHeight + 'px'}">
       请调整图片
     </div>
-    <div ref="cropBox" class="cropper-box" @touchstart.prevent="touchStart" @touchmove.prevent="touchMove" @touchend.prevent="touchEnd"></div>
+    <div ref="cropBox" class="cropper-box" @touchstart.prevent="touchStart" @touchmove.prevent="touchMove"></div>
     <div class="cover cover box box-ac box-jc" :style="{height: coverHeight + 'px'}">
       <div class="box box-f1 box-jc box-fh">
         <div class="btn" @click="checkPhoto">重选</div>
@@ -66,7 +66,9 @@
 </template>
 
 <script>
-import EXIF from '../assets/js/exif-small'
+// import EXIF from '../assets/js/exif-small'
+import lrz from 'lrz'
+
 const getDinstance = function (point0, point1) {
   return Math.sqrt(Math.pow(point0.pageY - point1.pageY, 2) + Math.pow(point0.pageX - point1.pageX, 2))
 }
@@ -123,7 +125,7 @@ export default {
   },
   watch: {
     'imageState': {
-      handler (val, oldVal) {
+      handler (val) {
         // console.log(val)
         this.imageStyle.transform = 'translate3d(-' + val.left + 'px, -' + val.top + 'px, 0px) scale(' + val.scale + ')'
       },
@@ -139,26 +141,39 @@ export default {
       this.$refs.file.click()
     },
     readImage ($event) {
-      this.$store.commit('isLoading', true)
       var self = this
       var file = $event.target.files[0]
-      var reader = new window.FileReader()
-      reader.onload = () => {
-        EXIF.getData(file, function () {
-          let orientation = EXIF.getTag(this, 'Orientation')
-          if (!orientation) orientation = 1
-          console.log('orientation>>>', orientation)
-          self.orientation = orientation
+      lrz(file)
+        .then(rst => {
+          self.orientation = 1
           self.$refs.img.onload = () => {
-            self.$store.commit('isLoading', false)
             self.initCropper()
           }
-          self.$refs.img.src = reader.result
+          self.$refs.img.src = rst.base64
           $event.target.value = null
         })
-      }
-      reader.readAsDataURL(file)
+        // .always(() => {
+        //   this.$store.commit('isLoading', false)
+        // })
     },
+    // readImage ($event) {
+    //   var self = this
+    //   var file = $event.target.files[0]
+    //   var reader = new window.FileReader()
+    //   reader.onload = () => {
+    //     EXIF.getData(file, function () {
+    //       let orientation = EXIF.getTag(this, 'Orientation')
+    //       if (!orientation) orientation = 1
+    //       self.orientation = orientation
+    //       self.$refs.img.onload = () => {
+    //         self.initCropper()
+    //       }
+    //       self.$refs.img.src = reader.result
+    //       $event.target.value = null
+    //     })
+    //   }
+    //   reader.readAsDataURL(file)
+    // },
     initCropper () {
       this.isShow = true // 显示裁剪界面
       this.$nextTick(() => {
@@ -312,9 +327,6 @@ export default {
         }
         this.touchPos = touchPos
       }
-    },
-    touchEnd (event) {
-      // console.log('end')
     }
   }
 }

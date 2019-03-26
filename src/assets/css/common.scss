@@ -41,23 +41,4 @@ a{text-decoration: none;}
   background-color:rgba(0,0,0,0);
 }
 
-.icon-back{
-  position: absolute;
-  z-index:2;
-  left:.2rem;
-  top:.17rem;
-  width:.5rem;
-  height:.5rem;
-  background-image:url('../images/icon-back.svg');
-}
 
-.icon-upload{
-  background-image:url('../images/icon-camera.svg');
-}
-
-.icon-serach{
-  background-image:url('../images/icon-search.svg');
-}
-#__vconsole{
-  font-size:.24rem !important;
-}

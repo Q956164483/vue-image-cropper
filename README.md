@@ -8,10 +8,10 @@
 git clone https://github.com/Q956164483/vue-image-cropper.git
 cd vue-image-cropper
 yarn
-yarn run dev
+yarn run serve
 ```
 ### 4.使用
-1. copy本项目的 ./src/components/imageCropper.vue文件 (imageCropper.vue需要引入exif-small.js)
+1. copy本项目的 ./src/components/imageCropper.vue文件 (imageCropper.vue需要引入lrz)所以需要 yarn add lrz || npm install lrz
 2. 在需要使用的页面直接引入imageCropper组件并绑定cropperConfig配置参数和裁剪之后的回调函数callback
 ```HTML
 <image-cropper ref="imageCropper" :cropperConfig="cropperConfig" :callback="loadImage"></image-cropper>

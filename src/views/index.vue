@@ -54,7 +54,6 @@ export default {
     },
     // 图片裁剪之后的回调
     loadImage (data) {
-      console.log(data)
       this.images.push(data)
     },
     uploadImg () {
@@ -72,7 +71,7 @@ export default {
   -webkit-overflow-scrolling: touch;
   padding-top:4rem;
   img{
-    display:box;
+    display:block;
     width:50%;
     float:left;
   }
